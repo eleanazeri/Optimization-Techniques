@@ -16,30 +16,79 @@ This repository contains MATLAB implementations and technical reports for the Op
 ```
 .
 ├── 01-1D-Search-Methods/
+│   ├── 01-Bisection-Method/
+│   │   ├── bisection_evals_vs_epsilon.m
+│   │   ├── bisection_evals_vs_l.m
+│   │   ├── bisection_endpoints_f1.m
+│   │   ├── bisection_endpoints_f2.m
+│   │   └── bisection_endpoints_f3.m
+│   ├── 02-Golden-Section/
+│   │   ├── golden_evals_vs_l.m
+│   │   ├── golden_endpoints_f1.m
+│   │   ├── golden_endpoints_f2.m
+│   │   └── golden_endpoints_f3.m
+│   ├── 03-Fibonacci-Method/
+│   │   ├── fibonacci_evals_vs_l.m
+│   │   ├── fibonacci_endpoints_f1.m
+│   │   ├── fibonacci_endpoints_f2.m
+│   │   └── fibonacci_endpoints_f3.m
+│   ├── 04-Bisection-Derivative/
+│   │   ├── bisection_deriv_evals_vs_l.m
+│   │   ├── bisection_deriv_endpoints_f1.m
+│   │   ├── bisection_deriv_endpoints_f2.m
+│   │   └── bisection_deriv_endpoints_f3.m
+│   └── Report_Assignment1.pdf
 ├── 02-Unconstrained-Minimization/
+│   ├── plot_objective_function.m
+│   ├── steepest_descent_constant_step.m
+│   ├── steepest_descent_exact_line_search.m
+│   ├── steepest_descent_armijo.m
+│   ├── newton_constant_step.m
+│   ├── newton_exact_line_search.m
+│   ├── newton_armijo.m
+│   ├── levenberg_marquardt_constant_step.m
+│   ├── levenberg_marquardt_exact_line_search.m
+│   ├── levenberg_marquardt_armijo.m
+│   └── Report_Assignment2.pdf
 ├── 03-Projected-Gradient-Method/
+│   ├── steepest_descent_unconstrained.m
+│   ├── projected_gradient_sk5.m
+│   ├── projected_gradient_sk1.m
+│   ├── projected_gradient_sk01.m
+│   └── Report_Assignment3.pdf
 └── 04-Genetic-Algorithms-Traffic-Flow/
+    ├── ga_traffic_flow_nominal.m
+    ├── ga_traffic_flow_varying_demand.m
+    └── Report_Project.pdf
 ```
 
 ### `01-1D-Search-Methods/` — Single-Variable Minimization via Interval Search Methods
-Minimization of convex functions of one variable over a bounded interval, without and with the use of derivatives. Systematic comparison of convergence behavior across methods and tolerance settings.
-- Methods implemented: Bisection, Golden Section, Fibonacci search
-- Contains MATLAB scripts (`.m`) and the technical report (`.pdf`)
+Minimization of convex functions of one variable over a bounded interval, without and with the use of derivatives. Systematic comparison of convergence behavior across methods and tolerance settings. Scripts are organized into four subfolders by method.
+
+- **`01-Bisection-Method/`** — `bisection_evals_vs_epsilon.m`, `bisection_evals_vs_l.m`, `bisection_endpoints_f{1,2,3}.m`
+- **`02-Golden-Section/`** — `golden_evals_vs_l.m`, `golden_endpoints_f{1,2,3}.m`
+- **`03-Fibonacci-Method/`** — `fibonacci_evals_vs_l.m`, `fibonacci_endpoints_f{1,2,3}.m`
+- **`04-Bisection-Derivative/`** — `bisection_deriv_evals_vs_l.m`, `bisection_deriv_endpoints_f{1,2,3}.m`
 
 ### `02-Unconstrained-Minimization/` — Unconstrained Minimization of Multivariable Functions
-Gradient-based minimization of multivariable objective functions using first- and second-order derivative information. Multiple functions and starting points are tested to compare convergence rate, stability, and computational cost across methods.
-- Methods implemented: Steepest Descent, Newton's Method, Levenberg-Marquardt
-- Contains MATLAB scripts and the technical report
+Gradient-based minimization of multivariable objective functions using first- and second-order derivative information. Multiple functions and starting points are tested to compare convergence rate, stability, and computational cost across methods. Each method is implemented under three step-size strategies: constant step, exact line search, and Armijo rule.
+
+- `plot_objective_function.m` — visualization of the objective functions
+- `steepest_descent_constant_step.m`, `steepest_descent_exact_line_search.m`, `steepest_descent_armijo.m`
+- `newton_constant_step.m`, `newton_exact_line_search.m`, `newton_armijo.m`
+- `levenberg_marquardt_constant_step.m`, `levenberg_marquardt_exact_line_search.m`, `levenberg_marquardt_armijo.m`
 
 ### `03-Projected-Gradient-Method/` — Constrained Optimization via the Projected Gradient Method
-Constrained minimization using the Projected Steepest Descent method. Gradient steps are projected onto the feasible set defined by inequality constraints, with analysis of convergence under varying step sizes and constraint geometries.
-- Methods implemented: Projected Steepest Descent
-- Contains MATLAB scripts and the technical report
+Constrained minimization using the Projected Steepest Descent method. Gradient steps are projected onto the feasible set defined by inequality constraints, with analysis of convergence under varying projection step sizes.
+
+- `steepest_descent_unconstrained.m` — baseline unconstrained run for comparison
+- `projected_gradient_sk5.m`, `projected_gradient_sk1.m`, `projected_gradient_sk01.m` — projected gradient with $s_k = 5, 1, 0.1$ respectively
 
 ### `04-Genetic-Algorithms-Traffic-Flow/` — Network Traffic Flow Minimization via Genetic Algorithms
-Application of Genetic Algorithms to minimize total vehicle travel time in a simulated road network operating under specific link capacity constraints. The formulation treats the problem as a combinatorial optimization task, solved using population-based evolutionary search.
-- Methods implemented: Genetic Algorithms (`ga`)
-- Contains MATLAB scripts and the technical report
+Application of Genetic Algorithms to minimize total vehicle travel time in a simulated road network subject to link capacity constraints. Two demand scenarios are analyzed.
+
+- `ga_traffic_flow_nominal.m` — optimization under nominal demand ($V = 100$)
+- `ga_traffic_flow_varying_demand.m` — sensitivity analysis under varying demand ($\pm 15\%$)
 
 ---
 
